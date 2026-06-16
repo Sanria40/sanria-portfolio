@@ -164,78 +164,142 @@ function Portfolio() {
       {/* Hero */}
       <section id="home" className="relative px-4 pt-24 pb-12 sm:pt-28">
         <div className="mx-auto max-w-6xl">
-          <div data-reveal className="opacity-0 relative overflow-hidden rounded-[2.5rem] border border-border bg-card shadow-soft">
+          <div className="relative overflow-hidden rounded-[2.5rem] border border-border bg-card shadow-soft">
+            {/* Animated conic border */}
+            <div className="pointer-events-none absolute -inset-px rounded-[2.5rem] opacity-60"
+                 style={{ background: "conic-gradient(from 0deg, transparent 0deg, oklch(0.78 0.19 135) 90deg, transparent 180deg, oklch(0.88 0.18 130) 270deg, transparent 360deg)", animation: "spin 12s linear infinite", padding: 1, WebkitMask: "linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0)", WebkitMaskComposite: "xor", maskComposite: "exclude" }} />
             {/* Green radial wash */}
             <div className="pointer-events-none absolute inset-0" style={{ background: "var(--gradient-bg)" }} />
+            {/* Grid pattern */}
+            <div className="pointer-events-none absolute inset-0 opacity-[0.04]"
+                 style={{ backgroundImage: "linear-gradient(var(--foreground) 1px, transparent 1px), linear-gradient(90deg, var(--foreground) 1px, transparent 1px)", backgroundSize: "32px 32px" }} />
             <FloatingParticles />
 
-            <div className="relative px-6 pt-8 pb-0 sm:px-12 sm:pt-12">
-              {/* Top badge */}
-              <div className="flex justify-center">
-                <span className="inline-flex items-center gap-2 rounded-full border border-foreground/10 bg-background/70 px-3 py-1 text-[11px] font-medium text-muted-foreground backdrop-blur">
-                  <Sparkles size={12} className="text-foreground" /> Portfolio · Class of 2028
+            <div className="relative px-6 pt-8 pb-2 sm:px-12 sm:pt-12">
+              {/* Top badge row */}
+              <div className="flex flex-wrap items-center justify-between gap-3">
+                <span className="inline-flex items-center gap-2 rounded-full border border-foreground/10 bg-background/70 px-3 py-1.5 text-[11px] font-medium text-muted-foreground backdrop-blur">
+                  <span className="relative flex h-2 w-2">
+                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-secondary opacity-75" />
+                    <span className="relative inline-flex h-2 w-2 rounded-full bg-secondary" />
+                  </span>
+                  Available for opportunities
+                </span>
+                <span className="inline-flex items-center gap-2 rounded-full border border-foreground/10 bg-background/70 px-3 py-1.5 text-[11px] font-medium text-muted-foreground backdrop-blur">
+                  <MapPin size={12} /> Kerala, India
                 </span>
               </div>
 
               {/* Headline */}
-              <div className="mt-8 text-center">
+              <div className="mt-10 text-center">
                 <h1 className="font-display text-5xl font-bold leading-[0.95] tracking-tight text-foreground sm:text-7xl lg:text-[5.5rem]">
                   Hi, I'm Sanria
                 </h1>
-                <p className="mt-2 font-serif text-5xl italic leading-[1] text-foreground sm:text-7xl lg:text-[5.5rem]">
-                  Future Tech Professional
+                <p className="mt-1 font-serif text-5xl italic leading-[1] text-foreground sm:text-7xl lg:text-[5.5rem]">
+                  Future Tech <span className="relative inline-block">
+                    Professional
+                    <svg className="absolute -bottom-2 left-0 w-full" viewBox="0 0 300 12" preserveAspectRatio="none" aria-hidden="true">
+                      <path d="M2 8 Q 80 -2, 150 6 T 298 4" stroke="oklch(0.55 0.2 135)" strokeWidth="3" fill="none" strokeLinecap="round" />
+                    </svg>
+                  </span>
                 </p>
               </div>
 
               {/* Portrait + side widgets */}
               <div className="relative mt-10 grid items-end gap-6 sm:mt-14 sm:grid-cols-3">
                 {/* Left widget */}
-                <div className="order-2 space-y-4 sm:order-1 sm:pb-8">
-                  <span className="inline-flex items-center gap-2 rounded-full bg-background px-4 py-2 text-xs font-medium shadow-soft">
-                    <span className="relative flex h-2 w-2">
-                      <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-secondary opacity-75" />
-                      <span className="relative inline-flex h-2 w-2 rounded-full bg-secondary" />
-                    </span>
-                    Available for opportunities
-                  </span>
-                  <div className="flex items-center gap-3 rounded-2xl bg-background/80 p-3 shadow-soft backdrop-blur">
-                    <div className="flex -space-x-2">
-                      {["Σ", "P", "N"].map((c, i) => (
-                        <span key={i} className="grid h-8 w-8 place-items-center rounded-full border-2 border-card bg-foreground text-[10px] font-bold text-background">{c}</span>
-                      ))}
+                <div className="order-2 space-y-3 sm:order-1 sm:pb-10">
+                  <div className="rounded-2xl border border-border bg-background/80 p-4 shadow-soft backdrop-blur">
+                    <div className="flex items-center gap-2">
+                      <div className="flex -space-x-2">
+                        {[Megaphone, PartyPopper, HeartHandshake].map((Icon, i) => (
+                          <span key={i} className="grid h-8 w-8 place-items-center rounded-full border-2 border-card bg-foreground text-background">
+                            <Icon size={12} />
+                          </span>
+                        ))}
+                      </div>
+                      <span className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground">3 Roles</span>
                     </div>
-                    <p className="text-xs leading-tight text-muted-foreground">
-                      Led <strong className="text-foreground">3 teams</strong> across tech, media & social impact initiatives.
+                    <p className="mt-3 text-xs leading-snug text-muted-foreground">
+                      Leading <strong className="text-foreground">media, design & social impact</strong> teams across campus.
                     </p>
+                  </div>
+                  <div className="grid grid-cols-2 gap-2">
+                    <div className="rounded-xl border border-border bg-background/80 p-3 backdrop-blur">
+                      <p className="font-display text-xl font-bold text-foreground">2028</p>
+                      <p className="text-[10px] uppercase tracking-wider text-muted-foreground">B.Tech CSE</p>
+                    </div>
+                    <div className="rounded-xl border border-border bg-background/80 p-3 backdrop-blur">
+                      <p className="font-display text-xl font-bold text-foreground">10+</p>
+                      <p className="text-[10px] uppercase tracking-wider text-muted-foreground">Projects</p>
+                    </div>
                   </div>
                 </div>
 
                 {/* Portrait */}
-                <div className="order-1 mx-auto sm:order-2">
+                <div className="order-1 relative mx-auto sm:order-2">
+                  <div className="absolute inset-x-4 bottom-0 top-10 rounded-t-full bg-gradient-to-b from-secondary/40 to-transparent blur-2xl" />
                   <img
                     src={profileImg}
                     alt="Sanria Sara Jaison portrait"
                     width={420}
                     height={520}
                     className="relative z-10 h-[280px] w-auto object-cover object-top sm:h-[420px] lg:h-[480px]"
-                    style={{ filter: "grayscale(20%) contrast(1.02)" }}
                   />
+                  {/* Floating chip */}
+                  <div className="absolute right-0 top-6 z-20 hidden rounded-full border border-foreground/10 bg-background/90 px-3 py-1.5 text-[10px] font-semibold shadow-soft backdrop-blur sm:flex sm:items-center sm:gap-1.5">
+                    <Sparkles size={10} className="text-secondary" /> Designer
+                  </div>
+                  <div className="absolute -left-2 bottom-16 z-20 hidden rounded-full border border-foreground/10 bg-background/90 px-3 py-1.5 text-[10px] font-semibold shadow-soft backdrop-blur sm:flex sm:items-center sm:gap-1.5">
+                    <Code2 size={10} className="text-secondary" /> Engineer
+                  </div>
                 </div>
 
                 {/* Right widget */}
-                <div className="order-3 space-y-4 sm:pb-8 sm:text-right">
-                  <p className="mx-auto max-w-xs text-sm leading-relaxed text-muted-foreground sm:ml-auto sm:mr-0">
+                <div className="order-3 space-y-3 sm:pb-10 sm:text-right">
+                  <p className="text-sm leading-relaxed text-muted-foreground sm:ml-auto sm:max-w-[16rem]">
                     Blending <span className="font-serif italic text-foreground">code, design & leadership</span> to build experiences that feel intentional.
                   </p>
-                  <div className="flex sm:justify-end">
+                  <div className="flex flex-wrap gap-2 sm:justify-end">
                     <button
                       onClick={() => scrollTo("contact")}
-                      className="inline-flex items-center gap-2 rounded-full bg-foreground px-5 py-3 text-sm font-semibold text-background transition hover:opacity-90"
+                      className="group inline-flex items-center gap-2 rounded-full bg-foreground px-5 py-3 text-sm font-semibold text-background transition hover:gap-3"
                     >
-                      <ArrowRight size={16} /> Get in Touch
+                      Get in Touch
+                      <span className="grid h-6 w-6 place-items-center rounded-full bg-background text-foreground transition group-hover:rotate-45">
+                        <ArrowRight size={12} />
+                      </span>
                     </button>
                   </div>
+                  <div className="flex gap-2 sm:justify-end">
+                    {[
+                      { i: Github, h: "https://github.com/Sanria40" },
+                      { i: Linkedin, h: "https://www.linkedin.com/in/sanria-sara-jaison-24193a276" },
+                      { i: Instagram, h: "https://www.instagram.com/sanriiaaaa" },
+                    ].map(({ i: Icon, h }, idx) => (
+                      <a key={idx} href={h} target="_blank" rel="noreferrer" className="grid h-9 w-9 place-items-center rounded-full border border-border bg-background/80 backdrop-blur transition hover:bg-foreground hover:text-background">
+                        <Icon size={14} />
+                      </a>
+                    ))}
+                  </div>
                 </div>
+              </div>
+
+              {/* Marquee tech strip */}
+              <div className="relative mt-10 overflow-hidden border-t border-border pt-5">
+                <div className="flex gap-10 whitespace-nowrap" style={{ animation: "marquee 28s linear infinite" }}>
+                  {[...Array(2)].map((_, loop) => (
+                    <div key={loop} className="flex shrink-0 items-center gap-10 text-sm font-medium text-muted-foreground">
+                      {["Python", "Java", "C", "HTML", "CSS", "SQL", "Canva", "UI / UX", "Leadership", "Event Design"].map((t) => (
+                        <span key={t} className="inline-flex items-center gap-2">
+                          <span className="h-1 w-1 rounded-full bg-secondary" /> {t}
+                        </span>
+                      ))}
+                    </div>
+                  ))}
+                </div>
+                <div className="pointer-events-none absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-card to-transparent" />
+                <div className="pointer-events-none absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-card to-transparent" />
               </div>
             </div>
           </div>
