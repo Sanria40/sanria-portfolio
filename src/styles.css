@@ -32,7 +32,8 @@
   --color-ring: var(--ring);
   --color-glass: var(--glass);
   --color-glass-border: var(--glass-border);
-  --font-display: "Sora", system-ui, sans-serif;
+  --font-display: "Inter Tight", "Inter", system-ui, sans-serif;
+  --font-serif: "Instrument Serif", "DM Serif Display", Georgia, serif;
   --font-sans: "Inter", system-ui, sans-serif;
 }
 
