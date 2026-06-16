@@ -560,9 +560,9 @@ function Section({ id, eyebrow, title, children }: { id: string; eyebrow: string
     <section id={id} className="px-4 py-20 sm:py-28">
       <div className="mx-auto max-w-6xl">
         <div data-reveal className="opacity-0 mb-12 text-center">
-          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-primary">{eyebrow}</p>
-          <h2 className="mt-3 font-display text-3xl font-extrabold sm:text-4xl lg:text-5xl">
-            <span className="gradient-text">{title}</span>
+          <p className="text-xs font-semibold uppercase tracking-[0.25em] text-muted-foreground">/ {eyebrow}</p>
+          <h2 className="mt-3 font-display text-3xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-5xl">
+            <span className="font-serif italic font-normal">{title}</span>
           </h2>
         </div>
         {children}
