@@ -162,52 +162,97 @@ function Portfolio() {
       </header>
 
       {/* Hero */}
-      <section id="home" className="relative flex min-h-screen items-center px-4 pt-32 pb-20">
-        <FloatingParticles />
-        <div className="mx-auto grid w-full max-w-6xl items-center gap-12 md:grid-cols-2">
-          <div data-reveal className="opacity-0">
-            <span className="inline-flex items-center gap-2 rounded-full glass px-4 py-1.5 text-xs font-medium text-primary">
-              <Sparkles size={14} /> Available for opportunities
-            </span>
-            <h1 className="mt-5 text-4xl font-extrabold leading-tight sm:text-5xl lg:text-6xl">
-              Hi, I'm <span className="gradient-text">Sanria Sara Jaison</span>
-            </h1>
-            <p className="mt-4 text-lg font-medium text-muted-foreground sm:text-xl">
-              Computer Science Engineer · Creative Designer · Future Tech Professional
-            </p>
-            <p className="mt-6 min-h-[2rem] font-display text-2xl font-semibold text-foreground sm:text-3xl">
-              <span className="gradient-text cursor-blink">{typed}</span>
-            </p>
-            <p className="mt-6 max-w-xl text-base text-muted-foreground">
-              Blending technical knowledge with creativity, leadership, and communication — building meaningful experiences through code and design.
-            </p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <button onClick={() => scrollTo("projects")} className="inline-flex items-center gap-2 rounded-xl gradient-bg px-5 py-3 text-sm font-semibold text-primary-foreground shadow-glow transition hover:opacity-90">
-                View Portfolio <ArrowRight size={16} />
-              </button>
-              <button onClick={() => scrollTo("contact")} className="inline-flex items-center gap-2 rounded-xl glass px-5 py-3 text-sm font-semibold hover:text-primary">
-                Contact Me
-              </button>
-              <a href="#" onClick={(e) => e.preventDefault()} className="inline-flex items-center gap-2 rounded-xl border border-border px-5 py-3 text-sm font-semibold hover:bg-muted">
-                <Download size={16} /> Resume
-              </a>
+      <section id="home" className="relative px-4 pt-24 pb-12 sm:pt-28">
+        <div className="mx-auto max-w-6xl">
+          <div data-reveal className="opacity-0 relative overflow-hidden rounded-[2.5rem] border border-border bg-card shadow-soft">
+            {/* Green radial wash */}
+            <div className="pointer-events-none absolute inset-0" style={{ background: "var(--gradient-bg)" }} />
+            <FloatingParticles />
+
+            <div className="relative px-6 pt-8 pb-0 sm:px-12 sm:pt-12">
+              {/* Top badge */}
+              <div className="flex justify-center">
+                <span className="inline-flex items-center gap-2 rounded-full border border-foreground/10 bg-background/70 px-3 py-1 text-[11px] font-medium text-muted-foreground backdrop-blur">
+                  <Sparkles size={12} className="text-foreground" /> Portfolio · Class of 2028
+                </span>
+              </div>
+
+              {/* Headline */}
+              <div className="mt-8 text-center">
+                <h1 className="font-display text-5xl font-bold leading-[0.95] tracking-tight text-foreground sm:text-7xl lg:text-[5.5rem]">
+                  Hi, I'm Sanria
+                </h1>
+                <p className="mt-2 font-serif text-5xl italic leading-[1] text-foreground sm:text-7xl lg:text-[5.5rem]">
+                  Future Tech Professional
+                </p>
+              </div>
+
+              {/* Portrait + side widgets */}
+              <div className="relative mt-10 grid items-end gap-6 sm:mt-14 sm:grid-cols-3">
+                {/* Left widget */}
+                <div className="order-2 space-y-4 sm:order-1 sm:pb-8">
+                  <span className="inline-flex items-center gap-2 rounded-full bg-background px-4 py-2 text-xs font-medium shadow-soft">
+                    <span className="relative flex h-2 w-2">
+                      <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-secondary opacity-75" />
+                      <span className="relative inline-flex h-2 w-2 rounded-full bg-secondary" />
+                    </span>
+                    Available for opportunities
+                  </span>
+                  <div className="flex items-center gap-3 rounded-2xl bg-background/80 p-3 shadow-soft backdrop-blur">
+                    <div className="flex -space-x-2">
+                      {["Σ", "P", "N"].map((c, i) => (
+                        <span key={i} className="grid h-8 w-8 place-items-center rounded-full border-2 border-card bg-foreground text-[10px] font-bold text-background">{c}</span>
+                      ))}
+                    </div>
+                    <p className="text-xs leading-tight text-muted-foreground">
+                      Led <strong className="text-foreground">3 teams</strong> across tech, media & social impact initiatives.
+                    </p>
+                  </div>
+                </div>
+
+                {/* Portrait */}
+                <div className="order-1 mx-auto sm:order-2">
+                  <img
+                    src={profileImg}
+                    alt="Sanria Sara Jaison portrait"
+                    width={420}
+                    height={520}
+                    className="relative z-10 h-[280px] w-auto object-cover object-top sm:h-[420px] lg:h-[480px]"
+                    style={{ filter: "grayscale(20%) contrast(1.02)" }}
+                  />
+                </div>
+
+                {/* Right widget */}
+                <div className="order-3 space-y-4 sm:pb-8 sm:text-right">
+                  <p className="mx-auto max-w-xs text-sm leading-relaxed text-muted-foreground sm:ml-auto sm:mr-0">
+                    Blending <span className="font-serif italic text-foreground">code, design & leadership</span> to build experiences that feel intentional.
+                  </p>
+                  <div className="flex sm:justify-end">
+                    <button
+                      onClick={() => scrollTo("contact")}
+                      className="inline-flex items-center gap-2 rounded-full bg-foreground px-5 py-3 text-sm font-semibold text-background transition hover:opacity-90"
+                    >
+                      <ArrowRight size={16} /> Get in Touch
+                    </button>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-          <div data-reveal className="relative mx-auto opacity-0">
-            <div className="absolute -inset-6 rounded-full gradient-bg opacity-40 blur-3xl animate-gradient" />
-            <div className="relative">
-              <div className="absolute -inset-2 rounded-full gradient-bg animate-gradient" />
-              <img
-                src={profileImg}
-                alt="Sanria Sara Jaison portrait"
-                width={384}
-                height={384}
-                className="relative h-72 w-72 rounded-full object-cover ring-4 ring-background sm:h-96 sm:w-96"
-              />
-              <div className="absolute -bottom-3 -right-3 rounded-2xl glass px-4 py-2 shadow-soft">
-                <p className="text-xs font-medium text-muted-foreground">B.Tech CSE</p>
-                <p className="text-sm font-bold">Class of 2028</p>
-              </div>
+
+          {/* Sub-row under hero */}
+          <div className="mx-auto mt-6 grid max-w-4xl gap-3 sm:grid-cols-[1fr_auto_1fr] sm:items-center">
+            <p className="text-sm text-muted-foreground">
+              <span className="font-serif italic text-foreground">Currently:</span> {typed}<span className="cursor-blink" />
+            </p>
+            <div className="hidden h-px bg-border sm:block" />
+            <div className="flex flex-wrap gap-2 sm:justify-end">
+              <button onClick={() => scrollTo("projects")} className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-2 text-xs font-semibold hover:border-foreground">
+                View Portfolio <ArrowRight size={14} />
+              </button>
+              <a href="#" onClick={(e) => e.preventDefault()} className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-2 text-xs font-semibold hover:border-foreground">
+                <Download size={14} /> Resume
+              </a>
             </div>
           </div>
         </div>
@@ -515,9 +560,9 @@ function Section({ id, eyebrow, title, children }: { id: string; eyebrow: string
     <section id={id} className="px-4 py-20 sm:py-28">
       <div className="mx-auto max-w-6xl">
         <div data-reveal className="opacity-0 mb-12 text-center">
-          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-primary">{eyebrow}</p>
-          <h2 className="mt-3 font-display text-3xl font-extrabold sm:text-4xl lg:text-5xl">
-            <span className="gradient-text">{title}</span>
+          <p className="text-xs font-semibold uppercase tracking-[0.25em] text-muted-foreground">/ {eyebrow}</p>
+          <h2 className="mt-3 font-display text-3xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-5xl">
+            <span className="font-serif italic font-normal">{title}</span>
           </h2>
         </div>
         {children}
