@@ -7,7 +7,8 @@ import {
   Network, Mic, Calendar, Sun, Moon, ExternalLink, Database, Briefcase,
   PenTool, MonitorSmartphone, Wrench, Send, CheckCircle2,
 } from "lucide-react";
-import profileImg from "@/assets/profile.jpg";
+import profileAsset from "@/assets/profile.jpg.asset.json";
+const profileImg = profileAsset.url;
 import projectImg from "@/assets/project-scm.jpg";
 
 export const Route = createFileRoute("/")({
