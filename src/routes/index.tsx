@@ -691,16 +691,50 @@ function ContactRow({ icon: Icon, label, value, href }: { icon: typeof Mail; lab
 }
 
 function ContactForm() {
-  const [sent, setSent] = useState(false);
+  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
+  const [errorMsg, setErrorMsg] = useState("");
+
+  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const form = e.currentTarget;
+    setStatus("sending");
+    setErrorMsg("");
+    try {
+      const formData = new FormData(form);
+      formData.append("access_key", "04b1f7a5-d427-461d-8002-73bbac93518e");
+      formData.append("subject", "New portfolio contact form submission");
+      formData.append("from_name", "Sanria Portfolio");
+
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData,
+      });
+      const data = await res.json();
+      if (data.success) {
+        setStatus("sent");
+        form.reset();
+        setTimeout(() => setStatus("idle"), 5000);
+      } else {
+        setStatus("error");
+        setErrorMsg(data.message || "Something went wrong. Please try again.");
+      }
+    } catch (err) {
+      setStatus("error");
+      setErrorMsg("Network error. Please try again.");
+    }
+  };
+
   return (
     <form
       data-reveal
       className="opacity-0 rounded-2xl glass p-6 shadow-soft sm:p-8"
-      onSubmit={(e) => { e.preventDefault(); setSent(true); setTimeout(() => setSent(false), 4000); (e.target as HTMLFormElement).reset(); }}
+      onSubmit={onSubmit}
     >
       <h3 className="font-display text-xl font-bold">Send a message</h3>
       <p className="mt-2 text-sm text-muted-foreground">I'll get back to you as soon as I can.</p>
       <div className="mt-6 grid gap-4">
+        {/* Honeypot field for spam protection */}
+        <input type="checkbox" name="botcheck" className="hidden" style={{ display: "none" }} tabIndex={-1} autoComplete="off" />
         <Input name="name" label="Name" placeholder="Your name" />
         <Input name="email" type="email" label="Email" placeholder="you@example.com" />
         <div>
@@ -708,9 +742,22 @@ function ContactForm() {
           <textarea required name="message" rows={4} placeholder="Tell me about your project or idea..."
             className="w-full resize-none rounded-xl border border-border bg-card/50 px-4 py-3 text-sm outline-none transition focus:border-primary focus:ring-2 focus:ring-primary/20" />
         </div>
-        <button type="submit" className="inline-flex items-center justify-center gap-2 rounded-xl gradient-bg px-5 py-3 text-sm font-semibold text-primary-foreground shadow-glow hover:opacity-90">
-          {sent ? <><CheckCircle2 size={16} /> Sent — thank you!</> : <><Send size={16} /> Send Message</>}
+        <button
+          type="submit"
+          disabled={status === "sending"}
+          className="inline-flex items-center justify-center gap-2 rounded-xl gradient-bg px-5 py-3 text-sm font-semibold text-primary-foreground shadow-glow hover:opacity-90 disabled:opacity-60"
+        >
+          {status === "sent" ? (
+            <><CheckCircle2 size={16} /> Sent — thank you!</>
+          ) : status === "sending" ? (
+            <>Sending...</>
+          ) : (
+            <><Send size={16} /> Send Message</>
+          )}
         </button>
+        {status === "error" && (
+          <p className="text-sm text-destructive">{errorMsg}</p>
+        )}
       </div>
     </form>
   );
