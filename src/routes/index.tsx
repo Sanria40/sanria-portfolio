@@ -241,7 +241,7 @@ function Portfolio() {
                 {/* Portrait — arch frame, Dribbble-style */}
                 <div className="order-1 relative mx-auto sm:order-2">
                   <div
-                    className="relative mx-auto h-[320px] w-[240px] overflow-hidden rounded-t-[140px] sm:h-[440px] sm:w-[320px] sm:rounded-t-[180px] lg:h-[500px] lg:w-[360px] lg:rounded-t-[200px]"
+                    className="relative mx-auto h-[340px] w-[230px] overflow-hidden rounded-t-[140px] sm:h-[400px] sm:w-[260px] sm:rounded-t-[170px] lg:h-[460px] lg:w-[300px] lg:rounded-t-[200px]"
                     style={{ background: "linear-gradient(180deg, oklch(0.78 0.19 135) 0%, oklch(0.88 0.18 130) 100%)" }}
                   >
                     <img
