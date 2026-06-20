@@ -10,6 +10,7 @@ import {
 import profileAsset from "@/assets/profile.jpg.asset.json";
 const profileImg = profileAsset.url;
 import projectImg from "@/assets/project-scm.jpg";
+import resumeAsset from "@/assets/resume.docx.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -315,7 +316,7 @@ function Portfolio() {
               <button onClick={() => scrollTo("projects")} className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-2 text-xs font-semibold hover:border-foreground">
                 View Portfolio <ArrowRight size={14} />
               </button>
-              <a href="#" onClick={(e) => e.preventDefault()} className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-2 text-xs font-semibold hover:border-foreground">
+              <a href={resumeAsset.url} download="Sanria_Sara_Jaison_Resume.docx" className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-2 text-xs font-semibold hover:border-foreground">
                 <Download size={14} /> Resume
               </a>
             </div>
