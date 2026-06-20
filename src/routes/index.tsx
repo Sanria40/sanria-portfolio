@@ -238,21 +238,23 @@ function Portfolio() {
                   </div>
                 </div>
 
-                {/* Portrait */}
+                {/* Portrait — arch frame, Dribbble-style */}
                 <div className="order-1 relative mx-auto sm:order-2">
-                  <div className="absolute inset-x-4 bottom-0 top-10 rounded-t-full bg-gradient-to-b from-secondary/40 to-transparent blur-2xl" />
-                  <img
-                    src={profileImg}
-                    alt="Sanria Sara Jaison portrait"
-                    width={420}
-                    height={520}
-                    className="relative z-10 h-[280px] w-auto object-cover object-top sm:h-[420px] lg:h-[480px]"
-                  />
-                  {/* Floating chip */}
-                  <div className="absolute right-0 top-6 z-20 hidden rounded-full border border-foreground/10 bg-background/90 px-3 py-1.5 text-[10px] font-semibold shadow-soft backdrop-blur sm:flex sm:items-center sm:gap-1.5">
+                  <div
+                    className="relative mx-auto h-[320px] w-[240px] overflow-hidden rounded-t-[140px] sm:h-[440px] sm:w-[320px] sm:rounded-t-[180px] lg:h-[500px] lg:w-[360px] lg:rounded-t-[200px]"
+                    style={{ background: "linear-gradient(180deg, oklch(0.78 0.19 135) 0%, oklch(0.88 0.18 130) 100%)" }}
+                  >
+                    <img
+                      src={profileImg}
+                      alt="Sanria Sara Jaison portrait"
+                      className="absolute inset-x-0 bottom-0 mx-auto h-[110%] w-auto max-w-none object-cover object-top"
+                    />
+                  </div>
+                  {/* Floating chips */}
+                  <div className="absolute -right-2 top-10 z-20 rounded-full border border-foreground/10 bg-background/95 px-3 py-1.5 text-[10px] font-semibold shadow-soft backdrop-blur flex items-center gap-1.5 sm:-right-6 sm:top-16">
                     <Sparkles size={10} className="text-secondary" /> Designer
                   </div>
-                  <div className="absolute -left-2 bottom-16 z-20 hidden rounded-full border border-foreground/10 bg-background/90 px-3 py-1.5 text-[10px] font-semibold shadow-soft backdrop-blur sm:flex sm:items-center sm:gap-1.5">
+                  <div className="absolute -left-2 bottom-24 z-20 rounded-full border border-foreground/10 bg-background/95 px-3 py-1.5 text-[10px] font-semibold shadow-soft backdrop-blur flex items-center gap-1.5 sm:-left-6 sm:bottom-32">
                     <Code2 size={10} className="text-secondary" /> Engineer
                   </div>
                 </div>
