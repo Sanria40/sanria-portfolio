@@ -208,7 +208,7 @@ function Portfolio() {
               </div>
 
               {/* Portrait + side widgets */}
-              <div className="relative mt-10 grid items-end gap-6 sm:mt-14 sm:grid-cols-3">
+              <div className="relative mt-10 grid items-end gap-6 sm:mt-14 sm:grid-cols-[1fr_auto_1fr]">
                 {/* Left widget */}
                 <div className="order-2 space-y-3 sm:order-1 sm:pb-10">
                   <div className="rounded-2xl border border-border bg-background/80 p-4 shadow-soft backdrop-blur">
